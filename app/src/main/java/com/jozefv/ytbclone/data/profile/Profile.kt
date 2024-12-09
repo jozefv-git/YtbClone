@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.data
+package com.jozefv.ytbclone.data.profile
 
 import com.jozefv.ytbclone.R
 
