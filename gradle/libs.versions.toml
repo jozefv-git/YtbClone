@@ -1,7 +1,7 @@
 [versions]
 agp = "8.5.2"
 kotlin = "1.9.0"
-coreKtx = "1.15.0"
+coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -14,7 +14,7 @@ encrypted-shared-prefs = "1.1.0-alpha06"
 splash-screen = "1.0.0"
 kotlinx-serialization = "1.7.3"
 kotlin-serialization-plugin = "1.9.0"
-kotlin-parcelize = "1.9.25"
+kotlin-parcelize = "1.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

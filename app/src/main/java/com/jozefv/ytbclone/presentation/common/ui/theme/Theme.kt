@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.ui.theme
+package com.jozefv.ytbclone.presentation.common.ui.theme
 
 import android.app.Activity
 import android.os.Build
