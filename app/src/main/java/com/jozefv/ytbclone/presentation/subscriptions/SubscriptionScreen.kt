@@ -160,6 +160,7 @@ private fun SubscriptionScreen(
                                 onAction = { onAction(it) },
                                 state = subscriptionState,
                                 onItemClick = { videoResult ->
+                                    isSearchVisible = false
                                     isTrailingContentVisible = !isTrailingContentVisible
                                     navigator.navigateTo(
                                         pane = ListDetailPaneScaffoldRole.Detail,

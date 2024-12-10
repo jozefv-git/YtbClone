@@ -128,7 +128,7 @@ private fun ProfileScreen(profileState: ProfileState, onAction: (ProfileAction) 
             if (isDialogVisible) {
                 CustomAlertDialog(
                     dialogTitle = "Logout",
-                    dialogText = "Are you sure you want to log out?",
+                    dialogText = "Do you really want to log out?",
                     dialogIcon = {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_logout_24),
