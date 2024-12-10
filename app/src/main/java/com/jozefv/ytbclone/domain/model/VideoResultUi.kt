@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.domain
+package com.jozefv.ytbclone.domain.model
 
 // In reality, this may differ based on our received result
 // With domain model class, we try to expose only data what are important for our presentation layer

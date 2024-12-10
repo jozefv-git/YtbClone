@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -29,10 +30,10 @@ fun VideoItem(
     Column(
         Modifier
             .fillMaxWidth()
-            .height(400.dp)
             .clickable {
                 onCLick()
             }
+
     ) {
         SubcomposeAsyncImage(
             modifier = Modifier
@@ -40,7 +41,7 @@ fun VideoItem(
                 .fillMaxWidth(),
             model = videoResultUiParcelize.image,
             contentDescription = null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             loading = {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator(modifier = Modifier.size(40.dp))
@@ -53,7 +54,12 @@ fun VideoItem(
             }
         )
         SpacerVerS()
-        AuthorSection(videoResultUiParcelize = videoResultUiParcelize)
+        AuthorSection(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp),
+            videoResultUiParcelize = videoResultUiParcelize
+        )
     }
 }
 

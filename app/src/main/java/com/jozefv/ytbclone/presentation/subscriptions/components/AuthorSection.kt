@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.jozefv.ytbclone.R
-import com.jozefv.ytbclone.presentation.common.SpacerHorXS
+import com.jozefv.ytbclone.presentation.common.SpacerHorM
 import com.jozefv.ytbclone.presentation.common.SpacerVerXS
 import com.jozefv.ytbclone.presentation.common.ui.theme.Typography
 import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
@@ -37,7 +37,7 @@ fun AuthorSection(modifier: Modifier = Modifier, videoResultUiParcelize: VideoRe
                 .clip(CircleShape),
             model = videoResultUiParcelize.authorThumbnail,
             contentDescription = null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.FillBounds,
             loading = {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator(modifier = Modifier.size(16.dp))
@@ -51,7 +51,7 @@ fun AuthorSection(modifier: Modifier = Modifier, videoResultUiParcelize: VideoRe
                 )
             }
         )
-        SpacerHorXS()
+        SpacerHorM()
         Column(Modifier.fillMaxWidth()) {
             Text(
                 style = Typography.bodyLarge,

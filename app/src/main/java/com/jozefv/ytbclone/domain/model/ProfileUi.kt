@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.domain
+package com.jozefv.ytbclone.domain.model
 
 // This can be accessed by our UI, so we don't break our layer pattern
 data class ProfileUi(

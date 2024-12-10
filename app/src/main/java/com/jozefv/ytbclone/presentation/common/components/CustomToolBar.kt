@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun CustomToolBar(
     modifier: Modifier = Modifier,
-    scrollBehavior: TopAppBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(),
+    scrollBehavior: TopAppBarScrollBehavior,
     title: String,
     leadingContent: @Composable () -> Unit = {},
     trailingContent: @Composable () -> Unit = {}
@@ -42,6 +42,7 @@ fun CustomToolBar(
 @Composable
 private fun CustomToolBarPreview() {
     CustomToolBar(
+        scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(),
         title = "List of subscriptions",
         leadingContent = {
             Icon(
