@@ -1,20 +1,21 @@
 [versions]
 agp = "8.5.2"
-kotlin = "1.9.0"
+kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.09.03"
+composeBom = "2024.11.00"
 coil-compose = "2.7.0"
 koin = "3.5.6"
 encrypted-shared-prefs = "1.1.0-alpha06"
-splash-screen = "1.0.0"
+splash-screen = "1.0.1"
 kotlinx-serialization = "1.7.3"
-kotlin-serialization-plugin = "1.9.0"
-kotlin-parcelize = "1.9.0"
+kotlin-serialization-plugin = "2.1.0"
+kotlin-parcelize = "2.1.0"
+navigation-compose ="2.8.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,11 +47,16 @@ androidx-adaptive-layout = { module = "androidx.compose.material3.adaptive:adapt
 androidx-adaptive-navigation = { module = "androidx.compose.material3.adaptive:adaptive-navigation" }
 #Json serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+#Navigation
+navigation-compose = {module="androidx.navigation:navigation-compose",version.ref = "navigation-compose"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serialization-plugin" }
+# When working with Kotlin 2.0.0 < , we need to set-up compose compiler plugin
+# https://developer.android.com/develop/ui/compose/compiler
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 # For adaptive layouts
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-parcelize" }
 

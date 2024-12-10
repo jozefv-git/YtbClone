@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlin.serialization.plugin)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -81,4 +82,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     // Adaptive layouts
     implementation(libs.bundles.adaptive.layouts)
+    // Navigation
+    implementation(libs.navigation.compose)
 }
