@@ -1,15 +1,9 @@
-package com.jozefv.ytbclone.data.profile
+package com.jozefv.ytbclone.data.profile.data_source
 
 import com.jozefv.ytbclone.R
+import com.jozefv.ytbclone.data.profile.model.ProfileResult
 
-data class Profile(
-    val email: String,
-    val accountName: String,
-    val bio: String,
-    val image: Int
-)
-
-val profile = Profile(
+val profileSource = ProfileResult(
     email = "john.doe@mail.com",
     accountName = "John Doe",
     bio = "Person who is trying to solve a different kind of challenges. " +

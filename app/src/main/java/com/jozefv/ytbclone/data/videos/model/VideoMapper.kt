@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.data.videos
+package com.jozefv.ytbclone.data.videos.model
 
 import com.jozefv.ytbclone.domain.model.VideoResultUi
 

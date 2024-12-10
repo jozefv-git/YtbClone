@@ -1,7 +1,7 @@
-package com.jozefv.ytbclone.domain
+package com.jozefv.ytbclone.domain.data_source
 
-import com.jozefv.ytbclone.data.videos.VideoResult
+import com.jozefv.ytbclone.domain.model.VideoResultUi
 
 interface VideoDataSource {
-    fun getVideos(): List<VideoResult>
+    fun getVideos(): List<VideoResultUi>
 }

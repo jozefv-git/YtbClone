@@ -14,7 +14,6 @@ class YtbCloneApp: Application() {
             androidContext(this@YtbCloneApp)
             // List of modules we need
             modules(coreModule)
-
         }
     }
 

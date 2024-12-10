@@ -7,7 +7,9 @@ import kotlinx.coroutines.withContext
 
 class EncryptedSessionStorage(private val sharedPrefs: SharedPreferences) : SessionStorage {
     override suspend fun isLoggedIn(): Boolean {
-        return sharedPrefs.getBoolean(KEY_AUTH, false)
+        return withContext(Dispatchers.IO) {
+            sharedPrefs.getBoolean(KEY_AUTH, false)
+        }
     }
 
     override suspend fun logIn(status: Boolean) {

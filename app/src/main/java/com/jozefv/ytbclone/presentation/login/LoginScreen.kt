@@ -3,6 +3,9 @@ package com.jozefv.ytbclone.presentation.login
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -11,23 +14,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.jozefv.ytbclone.presentation.common.EventObserver
 import com.jozefv.ytbclone.presentation.common.SpacerVerL
+import com.jozefv.ytbclone.presentation.common.ui.theme.Typography
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginScreenRoot(
     viewModel: LoginScreenViewModel = koinViewModel(),
-    onLogin: () -> Unit
+    onLoginSuccess: () -> Unit
 ) {
+
+    EventObserver(flow = viewModel.channel) { event ->
+        if (event is LoginEvent.OnLoginSuccess) {
+            onLoginSuccess()
+        }
+    }
 
     LoginScreen(
         state = viewModel.state,
         onLogin = { action ->
-            when (action) {
-                is LoginAction.OnLoginCLicked -> {
-                    viewModel.onAction(action)
-                    onLogin()
-                }
+            if (action is LoginAction.OnLoginCLicked) {
+                viewModel.onAction(action)
             }
         }
     )
@@ -40,18 +49,18 @@ private fun LoginScreen(
     onLogin: (LoginAction) -> Unit
 ) {
     Column(
-        Modifier.fillMaxSize(),
+        Modifier.fillMaxSize().padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         if (state.isLogging) {
-            Text(style = MaterialTheme.typography.headlineMedium, text = "Logging in...")
+            Text(style = Typography.headlineMedium, text = "Logging in...")
             SpacerVerL()
-            CircularProgressIndicator()
+            CircularProgressIndicator(Modifier.size(40.dp))
         } else {
-            Text(style = MaterialTheme.typography.headlineLarge, text = "YtbClone")
+            Text(style = Typography.headlineLarge, text = "YtbClone")
             SpacerVerL()
-            Button(onClick = { onLogin(LoginAction.OnLoginCLicked) }) {
+            Button(modifier = Modifier.fillMaxWidth(), onClick = { onLogin(LoginAction.OnLoginCLicked) }) {
                 Text(text = "Login")
             }
         }

@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,7 +40,7 @@ fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
                 .height((screenHeight * 0.6).dp),
             model = videoResultUiParcelize.image,
             contentDescription = null,
-            contentScale = ContentScale.Fit,
+            contentScale = ContentScale.Crop,
             loading = {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator(modifier = Modifier.size(40.dp))
@@ -66,7 +65,11 @@ fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
                 text = "Published: ${videoResultUiParcelize.publishedDate}"
             )
             SpacerVerM()
-            Text(style = Typography.bodyLarge, text = videoResultUiParcelize.description)
+            Text(
+                style = Typography.bodyLarge,
+                text = videoResultUiParcelize.description
+            )
+
         }
     }
 

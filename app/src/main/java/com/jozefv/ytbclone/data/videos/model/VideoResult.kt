@@ -1,4 +1,4 @@
-package com.jozefv.ytbclone.data.videos
+package com.jozefv.ytbclone.data.videos.model
 
 // This class represents our result obtained from our data source - ex. API
 data class VideoResult(

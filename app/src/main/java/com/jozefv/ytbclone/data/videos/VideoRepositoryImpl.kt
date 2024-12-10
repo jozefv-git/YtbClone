@@ -1,7 +1,7 @@
 package com.jozefv.ytbclone.data.videos
 
-import com.jozefv.ytbclone.domain.VideoDataSource
-import com.jozefv.ytbclone.domain.VideoRepository
+import com.jozefv.ytbclone.domain.data_source.VideoDataSource
+import com.jozefv.ytbclone.domain.repository.VideoRepository
 import com.jozefv.ytbclone.domain.model.VideoResultUi
 
 class VideoRepositoryImpl(private val videoDataSource: VideoDataSource) : VideoRepository {
@@ -10,11 +10,9 @@ class VideoRepositoryImpl(private val videoDataSource: VideoDataSource) : VideoR
         return if (ascendingOrder) {
             videoDataSource.getVideos()
                 .sortedBy { it.title }
-                .map { it.toVideoResultUi() }
         } else {
             videoDataSource.getVideos()
                 .sortedByDescending { it.title }
-                .map { it.toVideoResultUi() }
         }
     }
 
@@ -25,6 +23,5 @@ class VideoRepositoryImpl(private val videoDataSource: VideoDataSource) : VideoR
                 it.title.lowercase()
                     .contains(lowercaseQuery)
             }
-            .map { it.toVideoResultUi() }
     }
 }
