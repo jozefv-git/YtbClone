@@ -37,7 +37,7 @@ class ProfileViewModel(
             is ProfileAction.onLogoutClick -> {
                 viewModelScope.launch(dispatcherProvider.mainImmediate) {
                     // logout user
-                    authRepository.login(false)
+                    authRepository.logout()
                     // User is not loggedIn - send success logout event
                     if (!authRepository.isLoggedIn()) {
                         _channel.send(ProfileEvent.OnLogoutSuccess)

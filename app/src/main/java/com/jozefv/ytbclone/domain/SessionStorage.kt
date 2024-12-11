@@ -4,5 +4,6 @@ package com.jozefv.ytbclone.domain
 interface SessionStorage {
     // These can take some time, better to have it suspend
     suspend fun isAuthenticated(): Boolean
-    suspend fun login(status: Boolean)
+    suspend fun login()
+    suspend fun logout()
 }

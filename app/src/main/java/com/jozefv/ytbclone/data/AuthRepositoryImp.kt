@@ -8,12 +8,15 @@ import com.jozefv.ytbclone.domain.SessionStorage
 class AuthRepositoryImp(
     private val sessionStorage: SessionStorage
 ) : AuthRepository {
-    override suspend fun login(status: Boolean) {
-        sessionStorage.login(status)
-    }
-
     override suspend fun isLoggedIn(): Boolean {
         return sessionStorage.isAuthenticated()
     }
 
+    override suspend fun login() {
+        sessionStorage.login()
+    }
+
+    override suspend fun logout() {
+        sessionStorage.logout()
+    }
 }

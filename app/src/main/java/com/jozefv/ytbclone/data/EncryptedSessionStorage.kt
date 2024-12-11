@@ -15,12 +15,21 @@ class EncryptedSessionStorage(
         }
     }
 
-    override suspend fun login(status: Boolean) {
+    override suspend fun login() {
         withContext(dispatcherProvider.io) {
             sharedPrefs
                 .edit()
-                .putBoolean(KEY_AUTH, status)
+                .putBoolean(KEY_AUTH, true)
                 .commit() // This can block our code
+        }
+    }
+
+    override suspend fun logout() {
+        withContext(dispatcherProvider.io){
+            sharedPrefs
+                .edit()
+                .putBoolean(KEY_AUTH,false)
+                .commit()
         }
     }
 

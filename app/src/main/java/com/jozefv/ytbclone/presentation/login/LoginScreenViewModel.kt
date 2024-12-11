@@ -31,7 +31,7 @@ class LoginScreenViewModel(
                     state = state.copy(isLogging = true)
                     // For better UI delay login, to see the progress indicator
                     delay(2000)
-                    authRepository.login(true)
+                    authRepository.login()
                     if (authRepository.isLoggedIn()) {
                         _channel.send(LoginEvent.OnLoginSuccess)
                     }
