@@ -8,13 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.jozefv.ytbclone.domain.SessionStorage
 import kotlinx.coroutines.launch
 
-class MainViewModel(sessionStorage: SessionStorage): ViewModel() {
-     var state by mutableStateOf(MainState())
+class MainViewModel(
+    sessionStorage: SessionStorage,
+    private val dispatcherProvider: DispatcherProvider
+) : ViewModel() {
+    var state by mutableStateOf(MainState())
         private set
+
     init {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcherProvider.mainImmediate) {
             state = state.copy(isCheckingAuth = true)
-            state = state.copy(isLoggedIn = sessionStorage.isLoggedIn())
+            state = state.copy(isLoggedIn = sessionStorage.isAuthenticated())
             state = state.copy(isCheckingAuth = false)
         }
     }

@@ -3,6 +3,8 @@ package com.jozefv.ytbclone.di
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.jozefv.ytbclone.DispatcherProvider
+import com.jozefv.ytbclone.DispatchersProvider
 import com.jozefv.ytbclone.MainViewModel
 import com.jozefv.ytbclone.data.AuthRepositoryImp
 import com.jozefv.ytbclone.data.EncryptedSessionStorage
@@ -54,6 +56,8 @@ val coreModule = module {
     }
 
     singleOf(::EncryptedSessionStorage).bind<SessionStorage>()
+
+    singleOf(::DispatchersProvider).bind<DispatcherProvider>()
 
     viewModelOf(::SubscriptionViewModel)
     viewModelOf(::ProfileViewModel)

@@ -24,10 +24,10 @@ import com.jozefv.ytbclone.R
 import com.jozefv.ytbclone.presentation.common.SpacerVerL
 import com.jozefv.ytbclone.presentation.common.SpacerVerM
 import com.jozefv.ytbclone.presentation.common.ui.theme.Typography
-import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
+import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoUiParcelize
 
 @Composable
-fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
+fun VideoDetail(videoUiParcelize: VideoUiParcelize) {
     val screenHeight = LocalConfiguration.current.screenHeightDp
     Column(
         Modifier
@@ -38,7 +38,7 @@ fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height((screenHeight * 0.6).dp),
-            model = videoResultUiParcelize.image,
+            model = videoUiParcelize.image,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             loading = {
@@ -58,16 +58,16 @@ fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         ) {
-            AuthorSection(videoResultUiParcelize = videoResultUiParcelize)
+            AuthorSection(videoUiParcelize = videoUiParcelize)
             SpacerVerM()
             Text(
                 style = Typography.headlineSmall,
-                text = "Published: ${videoResultUiParcelize.publishedDate}"
+                text = "Published: ${videoUiParcelize.publishedDate}"
             )
             SpacerVerM()
             Text(
                 style = Typography.bodyLarge,
-                text = videoResultUiParcelize.description
+                text = videoUiParcelize.description
             )
 
         }
@@ -80,7 +80,7 @@ fun VideoDetail(videoResultUiParcelize: VideoResultUiParcelize) {
 private fun VideoDetailPreview() {
     MaterialTheme {
         VideoDetail(
-            VideoResultUiParcelize(
+            VideoUiParcelize(
                 title = "This is title",
                 description = "Some cool description",
                 author = "Anonym",

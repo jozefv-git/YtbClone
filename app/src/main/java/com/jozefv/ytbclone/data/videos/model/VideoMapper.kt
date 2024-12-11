@@ -1,9 +1,9 @@
 package com.jozefv.ytbclone.data.videos.model
 
-import com.jozefv.ytbclone.domain.model.VideoResultUi
+import com.jozefv.ytbclone.domain.model.Video
 
-fun VideoResult.toVideoResultUi(): VideoResultUi {
-    return VideoResultUi(
+fun VideoResult.toVideo(): Video {
+    return Video(
         title = title,
         description = description,
         author = author,

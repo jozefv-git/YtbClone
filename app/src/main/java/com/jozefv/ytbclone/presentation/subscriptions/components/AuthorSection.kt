@@ -26,16 +26,16 @@ import com.jozefv.ytbclone.R
 import com.jozefv.ytbclone.presentation.common.SpacerHorM
 import com.jozefv.ytbclone.presentation.common.SpacerVerXS
 import com.jozefv.ytbclone.presentation.common.ui.theme.Typography
-import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
+import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoUiParcelize
 
 @Composable
-fun AuthorSection(modifier: Modifier = Modifier, videoResultUiParcelize: VideoResultUiParcelize) {
+fun AuthorSection(modifier: Modifier = Modifier, videoUiParcelize: VideoUiParcelize) {
     Row(modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         SubcomposeAsyncImage(
             modifier = Modifier
                 .size(50.dp)
                 .clip(CircleShape),
-            model = videoResultUiParcelize.authorThumbnail,
+            model = videoUiParcelize.authorThumbnail,
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             loading = {
@@ -55,14 +55,14 @@ fun AuthorSection(modifier: Modifier = Modifier, videoResultUiParcelize: VideoRe
         Column(Modifier.fillMaxWidth()) {
             Text(
                 style = Typography.bodyLarge,
-                text = videoResultUiParcelize.title,
+                text = videoUiParcelize.title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             SpacerVerXS()
             Text(
                 style = Typography.headlineSmall,
-                text = videoResultUiParcelize.author,
+                text = videoUiParcelize.author,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -73,7 +73,7 @@ fun AuthorSection(modifier: Modifier = Modifier, videoResultUiParcelize: VideoRe
 @Composable
 private fun AuthorSectionPreview(){
     MaterialTheme {
-        AuthorSection(videoResultUiParcelize =VideoResultUiParcelize(
+        AuthorSection(videoUiParcelize =VideoUiParcelize(
             title = " This is really cool and looooooooooooooooooooooooooooong title",
             description = "Some description",
             author = "Anonym",

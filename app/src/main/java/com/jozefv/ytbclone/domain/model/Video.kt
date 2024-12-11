@@ -2,7 +2,7 @@ package com.jozefv.ytbclone.domain.model
 
 // In reality, this may differ based on our received result
 // With domain model class, we try to expose only data what are important for our presentation layer
-data class VideoResultUi(
+data class Video(
     val title: String,
     val description: String,
     val author: String,

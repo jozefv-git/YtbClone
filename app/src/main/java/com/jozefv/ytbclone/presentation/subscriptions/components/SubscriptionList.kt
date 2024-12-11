@@ -10,13 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jozefv.ytbclone.presentation.subscriptions.SubscriptionAction
 import com.jozefv.ytbclone.presentation.subscriptions.SubscriptionState
-import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
+import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoUiParcelize
 
 @Composable
 fun SubscriptionList(
     state: SubscriptionState,
     onAction: (SubscriptionAction) -> Unit,
-    onItemClick: (VideoResultUiParcelize) -> Unit
+    onItemClick: (VideoUiParcelize) -> Unit
 ) {
     val listState = rememberLazyListState(initialFirstVisibleItemIndex = state.itemPosition)
     LazyColumn(
@@ -26,7 +26,7 @@ fun SubscriptionList(
     ) {
         itemsIndexed(state.listOfSubscriptions) { index, video -> // TODO: Check keys here
             VideoItem(
-                videoResultUiParcelize = video,
+                videoUiParcelize = video,
                 onCLick = {
                     // When navigating back from the detail screen, persist index of our item - so
                     //  it will be displayed on the top

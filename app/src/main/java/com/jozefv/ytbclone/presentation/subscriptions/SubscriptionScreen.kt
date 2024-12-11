@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Search
@@ -42,7 +43,7 @@ import androidx.compose.ui.unit.dp
 import com.jozefv.ytbclone.R
 import com.jozefv.ytbclone.presentation.subscriptions.components.SubscriptionList
 import com.jozefv.ytbclone.presentation.subscriptions.components.VideoDetail
-import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
+import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoUiParcelize
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -64,7 +65,7 @@ private fun SubscriptionScreen(
     subscriptionState: SubscriptionState,
     onProfileClick: () -> Unit
 ) {
-    val navigator = rememberListDetailPaneScaffoldNavigator<VideoResultUiParcelize>()
+    val navigator = rememberListDetailPaneScaffoldNavigator<VideoUiParcelize>()
     val animatedRotation by animateFloatAsState(
         targetValue = if (subscriptionState.ascendingOrder) 0f else 180f,
         label = "rotation"
@@ -115,6 +116,7 @@ private fun SubscriptionScreen(
                                 }) {
                                     Icon(
                                         modifier = Modifier
+                                            .size(24.dp)
                                             .graphicsLayer {
                                                 rotationZ = animatedRotation
                                             },
@@ -132,7 +134,8 @@ private fun SubscriptionScreen(
                             }
                         }
                     }
-                })
+                }
+            )
         },
         content = { paddingValues ->
             Column(Modifier.padding(paddingValues)) {
@@ -174,7 +177,7 @@ private fun SubscriptionScreen(
                         AnimatedPane {
                             // If item exists, show detail pane
                             navigator.currentDestination?.content?.let { videoResult ->
-                                VideoDetail(videoResultUiParcelize = videoResult)
+                                VideoDetail(videoUiParcelize = videoResult)
                             }
                         }
                     }

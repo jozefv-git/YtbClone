@@ -1,19 +1,22 @@
 package com.jozefv.ytbclone.data
 
 import android.content.SharedPreferences
+import com.jozefv.ytbclone.DispatcherProvider
 import com.jozefv.ytbclone.domain.SessionStorage
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class EncryptedSessionStorage(private val sharedPrefs: SharedPreferences) : SessionStorage {
-    override suspend fun isLoggedIn(): Boolean {
-        return withContext(Dispatchers.IO) {
+class EncryptedSessionStorage(
+    private val sharedPrefs: SharedPreferences,
+    private val dispatcherProvider: DispatcherProvider
+) : SessionStorage {
+    override suspend fun isAuthenticated(): Boolean {
+        return withContext(dispatcherProvider.io) {
             sharedPrefs.getBoolean(KEY_AUTH, false)
         }
     }
 
-    override suspend fun logIn(status: Boolean) {
-        withContext(Dispatchers.IO) {
+    override suspend fun login(status: Boolean) {
+        withContext(dispatcherProvider.io) {
             sharedPrefs
                 .edit()
                 .putBoolean(KEY_AUTH, status)

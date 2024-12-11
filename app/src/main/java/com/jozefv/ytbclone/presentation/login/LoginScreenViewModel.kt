@@ -5,13 +5,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jozefv.ytbclone.DispatcherProvider
 import com.jozefv.ytbclone.domain.repository.AuthRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-class LoginScreenViewModel(private val authRepository: AuthRepository) : ViewModel() {
+class LoginScreenViewModel(
+    private val authRepository: AuthRepository,
+    private val dispatcherProvider: DispatcherProvider
+) : ViewModel() {
 
     var state by mutableStateOf(LoginScreenState())
         private set
@@ -21,7 +25,7 @@ class LoginScreenViewModel(private val authRepository: AuthRepository) : ViewMod
     fun onAction(action: LoginAction) {
         when (action) {
             is LoginAction.OnLoginCLicked -> {
-                viewModelScope.launch {
+                viewModelScope.launch(dispatcherProvider.mainImmediate) {
                     // We don't need to call is logging false, as VM will be destroyed and state reseted
                     // when navigation is performed
                     state = state.copy(isLogging = true)

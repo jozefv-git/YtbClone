@@ -20,11 +20,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.jozefv.ytbclone.R
 import com.jozefv.ytbclone.presentation.common.SpacerVerS
-import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoResultUiParcelize
+import com.jozefv.ytbclone.presentation.subscriptions.mappers.VideoUiParcelize
 
 @Composable
 fun VideoItem(
-    videoResultUiParcelize: VideoResultUiParcelize,
+    videoUiParcelize: VideoUiParcelize,
     onCLick: () -> Unit
 ) {
     Column(
@@ -39,7 +39,7 @@ fun VideoItem(
             modifier = Modifier
                 .height(300.dp)
                 .fillMaxWidth(),
-            model = videoResultUiParcelize.image,
+            model = videoUiParcelize.image,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             loading = {
@@ -58,7 +58,7 @@ fun VideoItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp),
-            videoResultUiParcelize = videoResultUiParcelize
+            videoUiParcelize = videoUiParcelize
         )
     }
 }
@@ -68,7 +68,7 @@ fun VideoItem(
 private fun VideoItemPreview() {
     MaterialTheme {
         VideoItem(
-            videoResultUiParcelize = VideoResultUiParcelize(
+            videoUiParcelize = VideoUiParcelize(
                 title = " This is really cool title",
                 description = "Some description",
                 author = "Anonym",
